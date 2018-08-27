@@ -7,6 +7,15 @@ import { NavbarSideComponent } from './components/navbar-side/navbar-side.compon
 import { ClientComponent } from './components/client/client.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalClientComponent } from './components/client/modal-client/modal-client.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ClientContactComponent } from './components/client/client-contact/client-contact.component';
+import { ContactMediaComponent } from './components/client/contact-media/contact-media.component';
+import * as $ from "jquery";
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,12 +23,20 @@ import { ModalClientComponent } from './components/client/modal-client/modal-cli
     NavbarComponent,
     NavbarSideComponent,
     ClientComponent,
-    ModalClientComponent
+    ModalClientComponent,
+    ClientContactComponent,
+    ContactMediaComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
-    NgbModule
+    NgbModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

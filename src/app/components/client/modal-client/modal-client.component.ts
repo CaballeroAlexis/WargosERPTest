@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormControl} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-modal-client',
@@ -8,26 +10,59 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalClientComponent implements OnInit {
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,private fb: FormBuilder) { }
+  tabs = [];
+  selected = new FormControl(0);
+  public clientForm: FormGroup;
 
   ngOnInit() {
+    this.clientForm = this.fb.group({
+      cod_cliente: ['', Validators.required],
+      cuit_dni: [''],
+      razon_social: [''],
+      nombre_ficticio:[''],
+      direccion: [''],
+      condicion_iva:['responsable_inscripto'],
+      observacion:[''],
+      primer_aviso:[''],
+      segundo_aviso:[''],
+      tercer_aviso:[''],
+      aviso_baja:[''],
+      aviso_corte:[''],
+      contactos: this.fb.array([])
+      
+    });
+
+    
+
+
   }
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  initQuestion() {
+    return this.fb.group({
+      type: [''],
+      description: ['']
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
+
+  addTab() {
+    this.tabs.push('Contacto '+(this.tabs.length+1));
+    this.selected.setValue(this.tabs.length - 1);
+    const control = <FormArray>this.clientForm.controls['contactos'];
+    const questionCtrl = this.initQuestion();
+    control.push(questionCtrl);    
+  }
+  removeTab(index: number) {
+    this.tabs.splice(index, 1);
+  }
+
+    saveClient(){
+      console.log(this.clientForm.value);
     }
-  }  
 
 }

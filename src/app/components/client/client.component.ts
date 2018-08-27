@@ -46,10 +46,9 @@ export class ClientComponent implements OnInit {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
-      console.log("Click");
+      
     } else {
       return  `with: ${reason}`;
-      console.log("MEHG");
     }
   }   
 }

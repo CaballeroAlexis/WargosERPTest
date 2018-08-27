@@ -1,0 +1,38 @@
+<div class='row' id="media"  >
+    <div class='col-md-12 col-lg-12' id='medio_de_contacto+contacto+numeroTipoMedio+' style='margin-top: 15px'>
+      <div class='col-lg-4 col-sm-4 smart-form'>
+        <label>Medio de contacto:</label>
+          <label class='input'>
+          <div class='input-group'>
+            <span class='input-group-addon'><i class='fa fa-phone'></i></span>
+            <input type='hidden' class='input-lg' id='did_medio+contacto+numeroTipoMedio+' value='0'>						
+            <select id='tipo_medio+contacto+numeroTipoMedio+' name='Documento' class='form-control input-lg info-usuario' data-campo='tipo_medio' data-tabla='usuario'>
+              <option value='telefono'>Teléfono</option>
+              <option value='mail'>Mail</option>
+              <option value='Otro'>Otro</option>
+            </select>								
+          </div>
+        </label>
+      </div>
+      <div class='col-lg-4 col-sm-4 smart-form'>
+        <label >Valor:</label>
+        <label class='input'>
+          <div class='input-group'>
+            <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+            <input class='campoP input-lg form-control' name='descripcion' id='descripcion+contacto+numeroTipoMedio+'  type='text' placeholder='Valor'  required>
+          </div>
+        </label>
+      </div>
+      <div class='col-lg-4 col-sm-4 smart-form'>
+        <div class='form-group'>
+          <div class='input-group' (click)="delete_media();">
+            <a id='eliminar_medio+contacto+numeroTipoMedio+' class='btn btn-labeled btn-danger' style='margin-top:20px;padding: 11px; padding-left:50px;padding-right:50px;'>
+              <i class='glyphicon glyphicon-remove'></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
