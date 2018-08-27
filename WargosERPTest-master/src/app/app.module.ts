@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavbarComponent ,
     NavbarSideComponent,
     ClientComponent,
     ModalClientComponent,
