@@ -14,7 +14,7 @@ export class ModalClientComponent implements OnInit {
   tabs = [];
   selected = new FormControl(0);
   public clientForm: FormGroup;
-
+  borrar:string;
   ngOnInit() {
     this.clientForm = this.fb.group({
       cod_cliente: ['', Validators.required],
