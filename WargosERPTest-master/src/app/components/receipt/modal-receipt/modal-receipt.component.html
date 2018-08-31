@@ -1,0 +1,106 @@
+
+<div class="modal fade bd-example-modal-lg" id="modalReceipt" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width: 85%" data-backdrop="static" data-keyboard="false" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <section class="col-lg-9" >
+            <h1 id="label-ficha" class="modal-title titulo">Recibo</h1>
+          </section>
+          <section>
+            <button id="cerrar-boton" data-original-title="Cerrar ventana" data-placement="left" rel="tooltip" data-target="#ficha1" type="button" class="btn btn-default" style='display:block;float: right;margin-right: 1%;box-shadow: none;border-color: white;'><i class="glyphicon glyphicon-remove"></i></button>
+          </section>
+        </div>
+      </div>
+      <div class="modal-body" >
+        <form [formGroup]="receiptForm">
+          <div class="row">
+            <div class='col-md-12 col-lg-12'>
+                <div class="col-lg-6 col-sm-6 smart-form">
+                  <div class="col-lg-5 col-sm-5 smart-form">
+                    <label>   Punto de venta:</label>
+                    <label class="input">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>	
+                        <input class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="punto_venta" placeholder='Punto de venta' maxlength='4' >                                              
+                        </div>
+                    </label>
+                </div>
+                <div class="col-lg-1 col-sm-1 smart-form">
+                   <h1>-</h1>
+                </div>
+                <div class="col-lg-5 col-sm-5 smart-form">
+                    <label>   Numero de recibo:</label>
+                    <label class="input">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>	
+                      <input class='campoP input-lg form-control' id='codigo_recibo' maxlength='8'  onblur="completar_con_ceros(8,'codigo_recibo')" type='text' formControlName="numero_recibo" placeholder='Número recibo'  >
+                      </div>
+                    </label>
+                </div>
+              </div>
+             			
+              <div class="col-lg-6 col-sm-6 smart-form">
+                  
+                      <label>   CUIT/DNI:</label>
+                      <label class="input">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                        <input class="campoP input-lg form-control" id='cuit_dni'  type="text" formControlName="CUIT" placeholder="CUIT / DNI" maxlength="25" disabled>								
+                      </div>
+                      </label>
+                  
+              </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class='col-md-12 col-lg-12'>
+              <div class="col-lg-6 col-sm-6 smart-form">
+                  <label>   Seleccionar cliente:</label>
+                <label class="input">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                    <select class="form-control input-lg info-usuario" formControlName="cliente"  id='codigo_cliente' data-campo='tipo_medio' data-tabla='usuario' onchange="ActualizarFicha();">
+                      <option value=''>Otro</option>
+                    </select>													
+                  </div>
+                </label>
+              </div>
+              <div class="col-lg-6 col-sm-6 smart-form">
+                  <label>   Razon social:</label>
+                <label class="input">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                    <input class="campoP input-lg form-control"  id='razon_social'  type="text" formControlName="razon_social" placeholder="Razón social" maxlength="25" disabled>								
+                  </div>
+                </label>
+              </div>
+              </div>
+         </div>
+         <div class="row">
+						<div class='col-md-12 col-lg-12'>	
+                <div class= "col-lg-6 col-sm-6 smart-form">
+                    <label>Fecha de creación:</label>
+                    <label class="input">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="icon-prepend fa fa-calendar"></i></span>									
+                        <input class="campoP input-lg form-control" type="text"  formControlName="fecha_creacion" placeholder="Fecha creacion" maxlength="25">								
+                      </div>
+                    </label>
+                </div>		
+						</div>
+          </div>
+          <hr>
+          <app-payment-method></app-payment-method>
+          <app-bill-receipt></app-bill-receipt>
+          <app-totals-receipt></app-totals-receipt>
+          
+      </form>
+      
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="saveReceipt()">Guardar</button>
+        </div>
+    </div>
+  </div>
+</div>

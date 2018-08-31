@@ -16,6 +16,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReceiptComponent } from './components/receipt/receipt.component';
+import { ModalReceiptComponent } from './components/receipt/modal-receipt/modal-receipt.component';
+import { TotalsReceiptComponent } from './components/receipt/totals-receipt/totals-receipt.component';
+import { BillReceiptComponent } from './components/receipt/bill-receipt/bill-receipt.component';
+import { PaymentMethodComponent } from './components/receipt/payment-method/payment-method.component';
+import { CashComponent } from './components/receipt/payment-method/cash/cash.component';
+import { DepositCheckComponent } from './components/receipt/payment-method/deposit-check/deposit-check.component';
+import { TransferComponent } from './components/receipt/payment-method/transfer/transfer.component';
+import { RetentionsIvaComponent } from './components/receipt/payment-method/retentions-iva/retentions-iva.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +34,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientComponent,
     ModalClientComponent,
     ClientContactComponent,
-    ContactMediaComponent
+    ContactMediaComponent,
+    ReceiptComponent,
+    ModalReceiptComponent,
+    TotalsReceiptComponent,
+    BillReceiptComponent,
+    PaymentMethodComponent,
+    CashComponent,
+    DepositCheckComponent,
+    TransferComponent,
+    RetentionsIvaComponent
   ],
   imports: [
     BrowserModule,

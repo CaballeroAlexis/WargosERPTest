@@ -1,0 +1,54 @@
+
+
+    <div *ngFor ="let x of list; let index = index"class='row' id=''>
+        <div class='col-md-12 col-lg-12'  style='margin-top: 15px'>
+        <div class='col-lg-2 col-sm-2 smart-form'>
+        <label >Medio de pago:</label>
+        <label class='input'>
+        <div class='input-group'>
+        <span class='input-group-addon'><i class='fa fa-phone'></i></span>
+        <input type='hidden' class='input-lg' id='did_medio' value='0'>					
+        <select id='select' (change)="select()"  name='Documento' #selectValue class='form-control input-lg info-usuario' data-campo='tipo_medio' data-tabla='usuario' >
+
+        <option value='efectivo' selected>Efectivo</option>
+        <option value='deposito_efectivo' >Depósito (Efectivo)</option>
+        <option value='deposito_cheque'>Depósito (cheque)</option>
+        <option value='transferencia'>Transferencia</option>
+        <option value='cheque'>Cheque</option>
+        <option value='retenciones_iva'>Retenciones (IVA)</option>
+        <option value='retenciones_iibb'>Retenciones (IIBB)</option>
+        <option value='retenciones_ganancias'>Retenciones (Ganancia)</option>
+        <option value='retenciones_suss'>Retenciones (SUSS)</option>
+        <option value='nota_credito' >Nota de crédito</option>
+      
+        </select>
+        </div>
+        </label>
+        </div>       
+        <div  *ngIf ="selectValue.value == 'efectivo'"  class="if">
+        <app-cash></app-cash>
+        </div>
+        <div  *ngIf ="selectValue.value == 'deposito_cheque'"  class="if">
+        <app-deposit-check></app-deposit-check>
+        </div>
+        <div  *ngIf ="selectValue.value == 'transferencia'"  class="if">      
+        <app-transfer></app-transfer>
+        </div> 
+        <div  *ngIf ="selectValue.value == 'retenciones_iva'"  class="if">
+        <app-retentions-iva></app-retentions-iva>
+        </div>
+
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-lg-2">
+              <button class="btn btn-primary" (click)="addComponent()">agregar</button>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+

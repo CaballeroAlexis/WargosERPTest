@@ -1,0 +1,62 @@
+<div *ngFor="let x of lista" class='row'>
+  <div class='col-md-12 col-lg-12' >
+  <input type='hidden' class='input-lg' id='did_factura"+i+"' value=0>
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label class='label'>   Fecha emisión</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+  <input class='campoP input-lg form-control' name='emision_factura' id=''  type='text' placeholder='Código factura' value="" maxlength='25' required>
+  </div>
+  </label>
+  </div>
+
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label class='label'>   Número factura</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+  <input class='campoP input-lg form-control' name='num_factura' id=' ' type='text' placeholder='numero factura' value="" maxlength='25' required>
+  </div>
+  </label>
+  </div>
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label class='label'>   Monto</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+  <input class='campoP input-lg form-control' style='text-align: right;' name='total_pagar' id=''  type='text' placeholder='0' maxlength='25' value="" required>
+  </div>
+  </label>
+  </div>
+  	<div class='col-lg-2 col-sm-2 smart-form'>
+  	<label class='label'> Saldo</label>																
+  	<label class='input'>
+  	<div class='input-group'>
+  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+  	<input class='campoP input-lg form-control' style='text-align: right;' name='saldo_actual' id=''  type='text' placeholder='0' maxlength='25' value="" onclick='' required>
+  	</div>
+  	</label>
+  	</div>
+  	<div class='col-lg-2 col-sm-2 smart-form'>	
+  	<label class='label'> Cancelación</label>																		
+  	<label class='input'>
+  	<div class='input-group'>
+  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+  	<input class='campoP input-lg form-control' style='text-align: right;' name='saldo_actual' id=''  type='text' placeholder='0' maxlength='25' value=0 onchange='' required>
+  	</div>
+  	</label>
+  	</div>			
+  	<div class='col-lg-2 col-sm-2 smart-form'>
+  	<label class='label'> Nuevo saldo</label>
+  	<label class='input'>
+  	<div class='input-group'>
+  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+
+  	<input class='campoP input-lg form-control' style='text-align: right;' name='nuevo_saldo' id=''  type='text' placeholder='0' maxlength='25' value="" required>
+  	</div>
+  	</label>		
+  	</div>
+  	</div>					
+  	<input type='hidden' class='input-lg' id='did' value='0'>
+  </div>
