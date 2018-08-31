@@ -1,0 +1,46 @@
+<div id="page-wrapper">
+  <div class="row ">
+      <button type="button" class="btn btn-primary btn-lg" style="justify-content: center;" data-toggle="modal" data-target="#modalReceipt" >Nuevo recibo</button>
+  </div>
+  <div class="col-md-12">
+      <div class="table-responsive">
+          <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Búsqueda..." aria-label="Username">
+          <table class="table" id="tableClient">
+              <thead>
+                  <tr>
+                      <th>Razón social</th>
+                      <th>Punto de venta</th>
+                      <th>Numero de recibo</th>
+                      <th>Monto</th>
+                      <th>Saldo deudor total</th>
+                      <th>Saldo acreedor total</th>
+                      <th>Fecha de creacion</th>
+                      <th>Codigo del cliente</th>
+                      <th>CUIT/DNI</th>
+                      <th>Acción</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Wargos S.A</td>
+                      <td>0014</td>
+                      <td>00003452</td>
+                      <td>150000</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>20-11-2014</td>
+                      <td>wargos</td>
+                      <td>2098726370</td>
+                      <td>
+                          <a class="btn btn-info" style="margin: 2px">Editar</a>
+                          <a class="btn btn-danger">Borrar</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<app-modal-receipt></app-modal-receipt>
