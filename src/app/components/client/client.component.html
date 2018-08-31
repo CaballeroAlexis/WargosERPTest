@@ -7,7 +7,7 @@
             <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Búsqueda..." aria-label="Username">
             <table class="table" id="tableClient">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Código</th>
                         <th>CUIT/DNI</th>
                         <th>Razón social</th>
@@ -18,15 +18,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alexis</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Wargos</td>
+                    <tr *ngFor="let  client of clients let i=index">
+                        <td>{{client.codigo}}</td>
+                        <td>{{client.cuit_dni}}</td>
+                        <td>{{client.razon_social}}</td>
+                        <td>{{client.nombre_ficitio}}</td>
+                        <td>{{client.direccion}}</td>
+                        <td>{{client.con_iva}}</td>
                         <td>
-                            <a class="btn btn-info" style="margin: 2px">Editar</a>
+                            <a class="btn btn-info" style="margin: 2px" data-toggle="modal" data-target="#modalClient"  >Editar</a>
                             <a class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>

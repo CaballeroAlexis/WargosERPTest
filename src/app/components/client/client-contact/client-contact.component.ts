@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 @Component({
   selector: 'app-client-contact',
@@ -6,17 +6,19 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./client-contact.component.css']
 })
 export class ClientContactComponent implements OnInit {
-  
+  medias=[1,2];
   @Input('group')
   public contactForm: FormGroup;
+
+  ngOnInit(){
+  }
   constructor() { }
 
-  ngOnInit() {
-  }
   delete_contact(){
     $("#contact_tab").remove();
+    
   }
   addMedia(){
-    
+    this.medias.push(2);
   }
 }

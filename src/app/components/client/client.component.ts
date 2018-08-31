@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {ClientService} from '../../services/client.service';
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -8,9 +10,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ClientComponent implements OnInit {
   closeResult: string;
-  constructor(private router:Router, private modalService: NgbModal) { }
-
+  constructor(private router:Router, private modalService: NgbModal,public  _clientService:ClientService) { }
+  clients:any[]=[];
+ 
   ngOnInit() {
+     this.clients=this._clientService.getClient();
+    console.log(this.clients);
   }
   myFunction(){
     var input, filter, table, tr, td, i;
@@ -39,6 +44,7 @@ export class ClientComponent implements OnInit {
     });
     console.log("OPEN")
   }
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
