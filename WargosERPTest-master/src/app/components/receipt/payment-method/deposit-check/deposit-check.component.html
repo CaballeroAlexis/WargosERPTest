@@ -1,10 +1,10 @@
- 
+    <form [formGroup]="depositCheckForm">
     <div class='col-lg-2 col-sm-2 smart-form'>
     <label >Monto:</label>
     <label class='input'>
     <div class='input-group'>
     <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
-    <input class='campoP input-lg form-control' style='text-align:right' name='monto' id='monto"+id_pago+"'  type='text' placeholder='0' maxlength='25'>
+    <input class='campoP input-lg form-control' style='text-align:right' formControlName="monto" id='monto"+id_pago+"'  type='text' placeholder='0' maxlength='25'>
     </div>
     </label>
     </div>
@@ -14,7 +14,7 @@
     <label class='input'>
     <div class='input-group'>
     <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
-    <input class='campoP input-lg form-control' style='text-align:right' name='cuenta' id='cuenta"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
+    <input class='campoP input-lg form-control' style='text-align:right' formControlName="cuenta" id='cuenta"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
     </div>
     </label>
     </div>
@@ -24,7 +24,7 @@
     <label class='input'>
     <div class='input-group'>
     <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
-    <input class='campoP input-lg form-control' style='text-align:right' name='fecha_acreditacion' id='numero_comprobante"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
+    <input class='campoP input-lg form-control' style='text-align:right'formControlName="numero_referencia" id='numero_comprobante"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
     </div>
     </label>
     </div>
@@ -34,7 +34,7 @@
     <label class='input'>
     <div class='input-group'>
     <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
-    <input class='campoP input-lg form-control' style='text-align:right' name='fecha_acreditacion' id='numero_cheque"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
+    <input class='campoP input-lg form-control' style='text-align:right' formControlName="numero_cheque" id='numero_cheque"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
     </div>	
     </label>
     </div>
@@ -54,6 +54,6 @@
             </div>
             </div>
            
-
+</form>
    
    

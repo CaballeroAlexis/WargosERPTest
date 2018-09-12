@@ -1,6 +1,7 @@
 
 
     <div *ngFor ="let x of list; let index = index"class='row' id=''>
+     
         <div class='col-md-12 col-lg-12'  style='margin-top: 15px'>
         <div class='col-lg-2 col-sm-2 smart-form'>
         <label >Medio de pago:</label>
@@ -26,20 +27,36 @@
         </label>
         </div>       
         <div  *ngIf ="selectValue.value == 'efectivo'"  class="if">
-        <app-cash></app-cash>
+        <app-cash (sendPay)="addPay($event, index)"></app-cash>
+        </div>
+        <div  *ngIf ="selectValue.value == 'deposito_efectivo'"  class="if">
+        <app-deposit-cash (sendPay)="addPay($event, index)"></app-deposit-cash>
+        </div>
+        <div  *ngIf ="selectValue.value == 'cheque'"  class="if">
+          <app-check (sendPay)="addPay($event, index)"></app-check>
         </div>
         <div  *ngIf ="selectValue.value == 'deposito_cheque'"  class="if">
-        <app-deposit-check></app-deposit-check>
+        <app-deposit-check (sendPay)="addPay($event, index)"></app-deposit-check>
         </div>
         <div  *ngIf ="selectValue.value == 'transferencia'"  class="if">      
-        <app-transfer></app-transfer>
+        <app-transfer (sendPay)="addPay($event, index)"></app-transfer>
         </div> 
         <div  *ngIf ="selectValue.value == 'retenciones_iva'"  class="if">
-        <app-retentions-iva></app-retentions-iva>
+        <app-retentions-iva (sendPay)="addPay($event, index)"></app-retentions-iva>
+        </div>
+        <div  *ngIf ="selectValue.value == 'retenciones_iibb'"  class="if">
+        <app-retentions-iibb (sendPay)="addPay($event, index)"></app-retentions-iibb>
+        </div>
+        <div  *ngIf ="selectValue.value == 'retenciones_ganancias'"  class="if">
+        <app-retentions-earnings (sendPay)="addPay($event, index)"></app-retentions-earnings>
+        </div>
+        <div  *ngIf ="selectValue.value == 'retenciones_suss'"  class="if">
+        <app-retentions-suss (sendPay)="addPay($event, index)"></app-retentions-suss>
         </div>
 
         </div>
-        </div>
+        
+    </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="col-lg-2">

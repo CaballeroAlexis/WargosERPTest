@@ -1,0 +1,55 @@
+  <form [formGroup]="checkForm">
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label >Monto:</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+  <input class='campoP input-lg form-control' style='text-align:right' formControlName="monto" id='monto"+i+"'  type='text' placeholder='0' maxlength='25'   onchange='ActualizarFicha();'  required>
+  </div>
+  </label>
+  </div>
+
+
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label >Fecha de acreditación:</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+  <input class='campoP input-lg form-control' style='text-align:right' formControlName="fecha_acreditacion" id='fecha_acreditacion"+i+"'  type='text' placeholder='0' maxlength='25' required>
+  </div>
+  </label>
+  </div>
+
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label >N° de cheque:</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+  <input class='campoP input-lg form-control' style='text-align:right'formControlName="numero_cheque" id='numero_cheque"+i+"'  type='text' placeholder='0' maxlength='25'  required>
+  </div>
+  </label>
+  </div>
+
+  <div class='col-lg-2 col-sm-2 smart-form'>
+  <label >Banco de origen:</label>
+  <label class='input'>
+  <div class='input-group'>
+  <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+  <input class='campoP input-lg form-control' style='text-align:right' formControlName="banco_origen" id='banco_origen"+i+"'  type='text' placeholder='0' maxlength='25' value="+header['medios_de_pago'][i]['banco_origen']+" required  >
+  </div>
+  </label>
+  </div>
+  <div class='col-lg-1' align='left'>
+    <div class='form-group'>
+    <label > </label>
+    <div class='input-group' id='Btn_eliminar_medio'>
+    <a id='eliminar_medio"+id_pago+"' class='btn btn-labeled btn-danger' style='margin-top:10px;'>
+    <span class='btn-label'>
+    
+    </span>Eliminar
+    </a>
+    </div>
+    </div>
+    </div>
+
+</form>

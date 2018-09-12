@@ -22,7 +22,8 @@
                     <label class="input">
                         <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>	
-                        <input class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="punto_venta" placeholder='Punto de venta' maxlength='4' >                                              
+                        <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="punto_venta" placeholder='Punto de venta' maxlength='4' >
+                        <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['punto_venta']}}"  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="punto_venta" placeholder='Punto de venta' maxlength='4'  >                                              
                         </div>
                     </label>
                 </div>
@@ -34,7 +35,8 @@
                     <label class="input">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>	
-                      <input class='campoP input-lg form-control' id='codigo_recibo' maxlength='8'  onblur="completar_con_ceros(8,'codigo_recibo')" type='text' formControlName="numero_recibo" placeholder='Número recibo'  >
+                      <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="numero_recibo" placeholder='Punto de venta' >
+                        <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['numero_recibo']}}"  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="numero_recibo" placeholder='Punto de venta'   > 
                       </div>
                     </label>
                 </div>
@@ -46,7 +48,8 @@
                       <label class="input">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                        <input class="campoP input-lg form-control" id='cuit_dni'  type="text" formControlName="CUIT" placeholder="CUIT / DNI" maxlength="25" disabled>								
+                        <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="CUIT" placeholder='Punto de venta' >
+                        <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['CUIT']}}"   type='text'formControlName="CUIT" placeholder='Punto de venta'   > 							
                       </div>
                       </label>
                   
@@ -71,7 +74,8 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input class="campoP input-lg form-control"  id='razon_social'  type="text" formControlName="razon_social" placeholder="Razón social" maxlength="25" disabled>								
+                    <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="razon_social" placeholder='Punto de venta' >
+                        <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['razon_social']}}"  type='text'formControlName="razon_social" placeholder='Punto de venta'  > 							
                   </div>
                 </label>
               </div>
@@ -84,22 +88,70 @@
                     <label class="input">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="icon-prepend fa fa-calendar"></i></span>									
-                        <input class="campoP input-lg form-control" type="text"  formControlName="fecha_creacion" placeholder="Fecha creacion" maxlength="25">								
+                        <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="fecha_creacion" placeholder='Punto de venta' >
+                        <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['fecha_creacion']}}"  type='text'formControlName="fecha_creacion" placeholder='Punto de venta'   > 								
                       </div>
                     </label>
                 </div>		
 						</div>
           </div>
           <hr>
-          <app-payment-method></app-payment-method>
-          <app-bill-receipt></app-bill-receipt>
-          <app-totals-receipt></app-totals-receipt>
+          
+            <div *ngIf="dataReceipt">
+          <app-payment-method  (sendPaymentMethod)="addPaymentMethod($event)" ></app-payment-method>
+            </div>
+          
+          <div *ngIf="dataReceipt">
+          <div *ngFor="let x of lista ; let i = index"> 
+            <!--[dataBillReceipt]="dataReceipt['data']['factura_recibo'][i]"-->
+          <app-bill-receipt  (sendBillReceipt)="addBillReceipt($event);" ></app-bill-receipt>
+          </div>
+          </div>
+          <!-- totales -->
+
+          <div class="row" id="row_totales">
+            <div class='col-md-12 col-lg-12'>
+              <div id="div_subtotal" class="col-lg-4 col-sm-4 smart-form">
+                <label class="label"> <h3> Total deudor</h3></label>
+                <label class="input">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                    <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="total_deudor" placeholder='Punto de venta'  >
+                   <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['total_deudor']}}"   type='text'formControlName="total_deudor" placeholder='Punto de venta' > 								
+                  </div>
+                </label>
+                </div>
+            
+        
+              <div id="div_subtotal" class="col-lg-4 col-sm-4 smart-form">
+                <label class="label"> <h3> Deudor aplicado</h3></label>
+                <label class="input">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                    <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  id='punto_venta' onblur="completar_con_ceros(4,'punto_venta')" type='text'formControlName="deudor_aplicado" placeholder='Punto de venta' >
+                    <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['deudor_aplicado']}}"   type='text'formControlName="deudor_aplicado" placeholder='Punto de venta'  >
+                  </div>
+                </label>
+              </div>
+        
+              <div class="col-lg-4 col-sm-4 smart-form">
+                <label class="label"> <h3>  Monto total pagado:</h3></label>
+                <label class="input">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
+                    <input *ngIf="!dataReceipt || dataReceipt.action == 'new' "  class='campoP input-lg form-control'  type='text'formControlName="total" placeholder='Punto de venta' >
+                    <input *ngIf="dataReceipt && dataReceipt.action == 'edit' " class='campoP input-lg form-control' value="{{dataReceipt.data['total']}}"   type='text'formControlName="total" placeholder='Punto de venta'   >
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
           
       </form>
       
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="saveReceipt()">Guardar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveReceipt()">Guardar</button>
         </div>
     </div>
   </div>

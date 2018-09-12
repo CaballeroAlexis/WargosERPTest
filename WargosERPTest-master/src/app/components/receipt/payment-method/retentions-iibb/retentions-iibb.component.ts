@@ -5,25 +5,27 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { EmitterVisitorContext } from '@angular/compiler';
 
 @Component({
-  selector: 'app-retentions-iva',
-  templateUrl: './retentions-iva.component.html',
-  styleUrls: ['./retentions-iva.component.css']
+  selector: 'app-retentions-iibb',
+  templateUrl: './retentions-iibb.component.html',
+  styleUrls: ['./retentions-iibb.component.css']
 })
-export class RetentionsIvaComponent implements OnInit {
-  public retentionsIva: FormGroup;
+export class RetentionsIibbComponent implements OnInit {
+  public retentionsIibb: FormGroup;
   @Output() sendPay =  new EventEmitter<FormGroup>();
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.retentionsIva = this.fb.group({
+    this.retentionsIibb = this.fb.group({
       monto: [''],
       numero_retencion: [''],
+      provincia: [''],
       fecha_retencion: [''],
-      type:['retentions-iva']
+      type:['retentions-iibb']
   });
-  if(this.retentionsIva.controls['monto'] != null){
-    this.sendPay.emit(this.retentionsIva);
+  if(this.retentionsIibb.controls['monto'] != null){
+    this.sendPay.emit(this.retentionsIibb);
   }
-  }
+}
 
 }

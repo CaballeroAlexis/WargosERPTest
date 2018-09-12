@@ -1,0 +1,105 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "hola": "hola",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "receipt": [
+    {
+      "punto_venta": "lk",
+      "numero_recibo": "lkj",
+      "CUIT": "lkj",
+      "cliente": "",
+      "razon_social": "j",
+      "fecha_creacion": "lkj",
+      "total_deudor": "kjl",
+      "deudor_aplicado": "kj",
+      "total": "lkj",
+      "factura_recibo": [
+        {
+          "emision_factura": "kj",
+          "numero_factura": "lkj",
+          "monto": "lkj",
+          "saldo": "lkj",
+          "cancelacion": "lkj",
+          "nuevo_saldo": "kl"
+        },
+        {
+          "emision_factura": "j",
+          "numero_factura": "lkj",
+          "monto": "lk",
+          "saldo": "jlk",
+          "cancelacion": "jlk",
+          "nuevo_saldo": "jl"
+        }
+      ],
+      "paymentMethod": [
+        {
+          "pay": [
+            {
+              "monto": "kl",
+              "type": "cash"
+            }
+          ]
+        }
+      ],
+      "id": 1
+    },
+    {
+      "punto_venta": "",
+      "numero_recibo": "",
+      "CUIT": "",
+      "cliente": "",
+      "razon_social": "",
+      "fecha_creacion": "",
+      "total_deudor": "",
+      "deudor_aplicado": "",
+      "total": "",
+      "factura_recibo": [
+        {
+          "emision_factura": "",
+          "numero_factura": "",
+          "monto": "",
+          "saldo": "",
+          "cancelacion": "",
+          "nuevo_saldo": ""
+        },
+        {
+          "emision_factura": "",
+          "numero_factura": "",
+          "monto": "",
+          "saldo": "",
+          "cancelacion": "",
+          "nuevo_saldo": ""
+        }
+      ],
+      "paymentMethod": [
+        {
+          "pay": [
+            {
+              "monto": "",
+              "type": "cash"
+            }
+          ]
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

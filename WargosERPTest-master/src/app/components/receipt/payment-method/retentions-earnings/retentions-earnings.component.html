@@ -1,0 +1,49 @@
+	<form [formGroup]="retentionsEarningForm">
+	<div class='col-lg-2 col-sm-2 smart-form'>
+	<label >Monto:</label>
+	<label class='input'>
+	<div class='input-group'>
+	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+	<input class='campoP input-lg form-control' style='text-align:right' formControlName="monto" id='monto"+id_pago+"'  type='text' placeholder='0' maxlength='25' onchange='ActualizarFicha();' required >
+	</div>
+	</label>
+	</div>
+
+
+	
+
+	<div class='col-lg-2 col-sm-2 smart-form'>
+	<label >N° de retención:</label>
+	<label class='input'>
+	<div class='input-group'>
+	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>							
+	<input class='campoP input-lg form-control' style='text-align:right' formControlName="numero_retencion" id='numero_retencion"+id_pago+"'  type='text' placeholder='0' maxlength='25' required>
+	</div>
+	</label>
+	</div>
+
+	<div class='col-lg-2 col-sm-2 smart-form' >
+	<label >  Fecha de retención:  </label>
+	<label class='input'>
+	<i class='icon-prepend fa fa-calendar'></i>
+	<input id='datepicker_retencion"+id_pago+"' formControlName="fecha_retencion" onfocus='datepicker()' type='text' />
+	</label>
+  </div>
+  
+
+  <div class='col-lg-1' align='left'>
+    <div class='form-group'>
+    <label > </label>
+    <div class='input-group' id='Btn_eliminar_medio'>
+    <a id='eliminar_medio"+id_pago+"' class='btn btn-labeled btn-danger' style='margin-top:10px;'>
+    <span class='btn-label'>
+    
+    </span>Eliminar
+    </a>
+    </div>
+    </div>
+    </div>
+
+	</form>
+
+

@@ -1,12 +1,14 @@
-<div *ngFor="let x of lista" class='row'>
+<div  class='row'>
   <div class='col-md-12 col-lg-12' >
+    <form [formGroup]="billReceiptForm">
   <input type='hidden' class='input-lg' id='did_factura"+i+"' value=0>
   <div class='col-lg-2 col-sm-2 smart-form'>
   <label class='label'>   Fecha emisión</label>
   <label class='input'>
   <div class='input-group'>
   <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-  <input class='campoP input-lg form-control' name='emision_factura' id=''  type='text' placeholder='Código factura' value="" maxlength='25' required>
+  <input   class='campoP input-lg form-control'  type='text' formControlName="emision_factura" placeholder='Emision factura' >
+  
   </div>
   </label>
   </div>
@@ -16,7 +18,7 @@
   <label class='input'>
   <div class='input-group'>
   <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-  <input class='campoP input-lg form-control' name='num_factura' id=' ' type='text' placeholder='numero factura' value="" maxlength='25' required>
+  <input   class='campoP input-lg form-control'  id='' onblur="completar_con_ceros(4,'punto_venta')" type='text' formControlName="numero_factura" placeholder='Numero de factura' >
   </div>
   </label>
   </div>
@@ -25,16 +27,17 @@
   <label class='input'>
   <div class='input-group'>
   <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-  <input class='campoP input-lg form-control' style='text-align: right;' name='total_pagar' id=''  type='text' placeholder='0' maxlength='25' value="" required>
-  </div>
+  <input   class='campoP input-lg form-control'  id='' onblur="completar_con_ceros(4,'punto_venta')" type='text' formControlName="monto" placeholder='monto' >
+   </div>
   </label>
   </div>
   	<div class='col-lg-2 col-sm-2 smart-form'>
   	<label class='label'> Saldo</label>																
   	<label class='input'>
   	<div class='input-group'>
-  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-  	<input class='campoP input-lg form-control' style='text-align: right;' name='saldo_actual' id=''  type='text' placeholder='0' maxlength='25' value="" onclick='' required>
+    <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+    <input   class='campoP input-lg form-control'  type='text' formControlName="saldo" placeholder='saldo' >
+
   	</div>
   	</label>
   	</div>
@@ -42,8 +45,9 @@
   	<label class='label'> Cancelación</label>																		
   	<label class='input'>
   	<div class='input-group'>
-  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-  	<input class='campoP input-lg form-control' style='text-align: right;' name='saldo_actual' id=''  type='text' placeholder='0' maxlength='25' value=0 onchange='' required>
+    <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+    <input   class='campoP input-lg form-control 'formControlName="cancelacion" placeholder='cancelacion' >
+   
   	</div>
   	</label>
   	</div>			
@@ -51,12 +55,12 @@
   	<label class='label'> Nuevo saldo</label>
   	<label class='input'>
   	<div class='input-group'>
-  	<span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
-
-  	<input class='campoP input-lg form-control' style='text-align: right;' name='nuevo_saldo' id=''  type='text' placeholder='0' maxlength='25' value="" required>
-  	</div>
+    <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>
+    <input   class='campoP input-lg form-control' formControlName="nuevo_saldo" placeholder='nuevo saldo' >
+    </div>
   	</label>		
-  	</div>
+    </div>
+  </form>
   	</div>					
   	<input type='hidden' class='input-lg' id='did' value='0'>
   </div>

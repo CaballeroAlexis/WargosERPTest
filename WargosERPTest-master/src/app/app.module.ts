@@ -25,6 +25,14 @@ import { CashComponent } from './components/receipt/payment-method/cash/cash.com
 import { DepositCheckComponent } from './components/receipt/payment-method/deposit-check/deposit-check.component';
 import { TransferComponent } from './components/receipt/payment-method/transfer/transfer.component';
 import { RetentionsIvaComponent } from './components/receipt/payment-method/retentions-iva/retentions-iva.component';
+import { RetentionsIibbComponent } from './components/receipt/payment-method/retentions-iibb/retentions-iibb.component';
+import { RetentionsEarningsComponent } from './components/receipt/payment-method/retentions-earnings/retentions-earnings.component';
+import { RetentionsSUSSComponent } from './components/receipt/payment-method/retentions-suss/retentions-suss.component';
+import { DepositCashComponent } from './components/receipt/payment-method/deposit-cash/deposit-cash.component';
+import { CheckComponent } from './components/receipt/payment-method/check/check.component';
+
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +51,12 @@ import { RetentionsIvaComponent } from './components/receipt/payment-method/rete
     CashComponent,
     DepositCheckComponent,
     TransferComponent,
-    RetentionsIvaComponent
+    RetentionsIvaComponent,
+    RetentionsIibbComponent,
+    RetentionsEarningsComponent,
+    RetentionsSUSSComponent,
+    DepositCashComponent,
+    CheckComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +67,9 @@ import { RetentionsIvaComponent } from './components/receipt/payment-method/rete
     MatCheckboxModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

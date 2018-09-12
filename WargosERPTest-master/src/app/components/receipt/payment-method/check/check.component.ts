@@ -5,24 +5,26 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { EmitterVisitorContext } from '@angular/compiler';
 
 @Component({
-  selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.css']
+  selector: 'app-check',
+  templateUrl: './check.component.html',
+  styleUrls: ['./check.component.css']
 })
-export class TransferComponent implements OnInit {
-  public transferForm: FormGroup;
+export class CheckComponent implements OnInit {
+  public checkForm: FormGroup;
   @Output() sendPay =  new EventEmitter<FormGroup>();
-  constructor(private fb:FormBuilder) { }
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.transferForm = this.fb.group({
+    this.checkForm = this.fb.group({
       monto: [''],
-      numero_referencia: [''],
       fecha_acreditacion: [''],
-      type:['transfer']
+      numero_cheque: [''],
+      banco_origen: [''],
+      type:['check']
   });
-  if(this.transferForm.controls['monto'] != null){
-    this.sendPay.emit(this.transferForm);
+  if(this.checkForm.controls['monto'] != null){
+    this.sendPay.emit(this.checkForm);
   }
   }
 

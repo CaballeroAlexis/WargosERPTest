@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,Input,EventEmitter } from '@angular/core';
 import {Router} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ReceiptService } from '../../../services/receipt.service';
 
 @Component({
   selector: 'app-receipt',
@@ -9,9 +10,29 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ReceiptComponent implements OnInit {
   closeResult: string;
-  constructor(private router:Router, private modalService: NgbModal) { }
-
+  receipts:any[]= [];
+  idReceipt:any =null;
+  dataFicha:object;
+  
+  constructor(private router:Router, private modalService: NgbModal, private _receiptService:ReceiptService) { }
+  
+  newReceipt(){
+    this.dataFicha={action:'new'}
+  }
+  editReceipt(receipt){
+    this.dataFicha={action:'edit',data:receipt}
+  }
+  deleteReceiptVar(id){
+    this.idReceipt = id;
+  }
+  deleteReceipt(){
+   
+    this._receiptService.deleteReceipt(this.idReceipt).subscribe((data:any)=>{console.log(data)
+      this.receipts= data;});
+  }
   ngOnInit() {
+    this._receiptService.getReceipt().subscribe((data:any)=>{console.log(data)
+    this.receipts= data;});
   }
   myFunction(){
     var input, filter, table, tr, td, i;

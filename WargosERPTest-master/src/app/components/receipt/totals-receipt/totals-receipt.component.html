@@ -1,5 +1,6 @@
 <div class="row" id="row_totales">
     <div class='col-md-12 col-lg-12'>
+      <form [formGroup]="totalReceiptForm">
       <div id="div_subtotal" class="col-lg-4 col-sm-4 smart-form">
         <label class="label"> <h3> Total deudor</h3></label>
         <label class="input">
@@ -8,7 +9,8 @@
             <input class="campoP input-lg form-control"  id='sub_total'  type="text"  formControlName="total_deudor" placeholder="Importe final" maxlength="25" required  style=" text-align: right;">								
           </div>
         </label>
-      </div>
+        </div>
+    
 
       <div id="div_subtotal" class="col-lg-4 col-sm-4 smart-form">
         <label class="label"> <h3> Deudor aplicado</h3></label>
@@ -29,5 +31,6 @@
           </div>
         </label>
       </div>
+      </form>
     </div>
   </div>

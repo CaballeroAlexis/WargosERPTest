@@ -5,24 +5,25 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { EmitterVisitorContext } from '@angular/compiler';
 
 @Component({
-  selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.css']
+  selector: 'app-retentions-suss',
+  templateUrl: './retentions-suss.component.html',
+  styleUrls: ['./retentions-suss.component.css']
 })
-export class TransferComponent implements OnInit {
-  public transferForm: FormGroup;
+export class RetentionsSUSSComponent implements OnInit {
+  public retentionsSuss: FormGroup;
   @Output() sendPay =  new EventEmitter<FormGroup>();
+
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
-    this.transferForm = this.fb.group({
+    this.retentionsSuss = this.fb.group({
       monto: [''],
-      numero_referencia: [''],
-      fecha_acreditacion: [''],
-      type:['transfer']
+      numero_retencion: [''],
+      fecha_retencion: [''],
+      type:['retentions-suss']
   });
-  if(this.transferForm.controls['monto'] != null){
-    this.sendPay.emit(this.transferForm);
+  if(this.retentionsSuss.controls['monto'] != null){
+    this.sendPay.emit(this.retentionsSuss);
   }
   }
 
