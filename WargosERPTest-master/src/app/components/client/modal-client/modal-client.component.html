@@ -77,7 +77,7 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <select class="form-control input-lg info-usuario" formControlName="condicion_iva" data-campo='tipo_medio' data-tabla='usuario'>
+                    <select class="form-control input-lg info-usuario" formControlName="con_iva" data-campo='tipo_medio' data-tabla='usuario'>
                       <option value='responsable_inscripto'>Responsable Inscripto</option>
                       <option value='monotributista'>Monotributista</option>
                       <option value='exento'>Exento</option>
@@ -176,14 +176,14 @@
               </div>
             </div>
 
-            <div class="row" formArrayName="contactos">
+            <div class="row" formArrayName="contacts">
               <mat-tab-group [selectedIndex]="selected.value"
               (selectedIndexChange)="selected.setValue($event)">
               <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">  
               <button mat-raised-button class="example-delete-tab-button"  (click)="removeTab(index)">
                 Eliminar contacto
               </button>
-                <app-client-contact [group]="clientForm.controls.contactos.controls[i]"></app-client-contact>
+                <app-client-contact [group]="clientForm.controls.contacts.controls[i]"></app-client-contact>
         
               </mat-tab>
 

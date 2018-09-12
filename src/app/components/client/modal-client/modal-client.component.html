@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-lg" id="modalClient" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg"  id="modalClient" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="width: 85%" data-backdrop="static" data-keyboard="false" >
     <div class="modal-content">
       <div class="modal-header">
@@ -21,17 +21,21 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input *ngIf="edit==false" class="campoP input-lg form-control"  type="text" placeholder="Código cliente"   formControlName="cod_cliente" required>								
-                    <input *ngIf="edit==true" class="campoP input-lg form-control"  type="text" placeholder="Código cliente"   formControlName="cod_cliente"  value={{clients[0].codigo}} required>								
+                    <input matInput class="campoP input-lg form-control"  type="text" placeholder="Código cliente"   formControlName="cod" required>								
+         
                   </div>
                 </label>
+                <mat-error *ngIf=" clientForm.hasError('required')">
+                  Please enter a cod
+                </mat-error>
               </div>
               <div class="col-lg-6 col-sm-6 smart-form">
                 <label>   CUIT / DNI:</label>
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input class="campoP input-lg form-control"   type="text" placeholder="CUIT / DNI"  formControlName="cuit_dni" required>								
+                    <input  class="campoP input-lg form-control"  type="text" placeholder="CUIT / DNI"  formControlName="cuit_dni" required>								
+
                   </div>
                 </label>
               </div>
@@ -45,7 +49,7 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input class="campoP input-lg form-control" formControlName="razon_social"  type="text" placeholder="Razón social"  required>								
+                    <input  class="campoP input-lg form-control" formControlName="business_name"  type="text" placeholder="Razón social"  required>								
                   </div>
                 </label>
               </div>
@@ -54,7 +58,8 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input class="campoP input-lg form-control"formControlName="nombre_ficticio"  type="text" placeholder="Nombre ficticio"  required>								
+                    <input  class="campoP input-lg form-control"formControlName="fantasy_name"  type="text" placeholder="Nombre ficticio"  required>								
+
                   </div>
                 </label>
               </div>
@@ -68,7 +73,8 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <input class="campoP input-lg form-control" formControlName="direccion"  type="text" placeholder="Dirección"  required>								
+                    <input class="campoP input-lg form-control" formControlName="address"  type="text" placeholder="Dirección"  required>								
+
                   </div>
                 </label>
               </div>
@@ -77,10 +83,10 @@
                 <label class="input">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>									
-                    <select class="form-control input-lg info-usuario" formControlName="condicion_iva" data-campo='tipo_medio' data-tabla='usuario'>
-                      <option value='responsable_inscripto'>Responsable Inscripto</option>
+                    <select class="form-control input-lg info-usuario" formControlName="con_iva" data-campo='tipo_medio' data-tabla='usuario' >
+                      <option value='responsable_inscripto' >Responsable Inscripto</option>
                       <option value='monotributista'>Monotributista</option>
-                      <option value='exento'>Exento</option>
+                      <option value='exento' selected>Exento</option>
                       <option value='no_responsable'>No responsable</option>
                       <option value='consumidor_final'>Consumidor final</option>
                     </select>													
@@ -97,7 +103,8 @@
                 <label class='input'>
                   <div class='input-group'>
                     <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>						
-                    <textarea class='campoP input-lg form-control' formControlName="observacion"  type='text' placeholder='Observación' maxlength='250' required></textarea>				
+                    <textarea class='campoP input-lg form-control' formControlName="obs"  type='text' placeholder='Observación' maxlength='250' required></textarea>				
+
                   </div>
                 </label>
               </div>
@@ -176,25 +183,37 @@
               </div>
             </div>
 
-            <div class="row" formArrayName="contactos">
-              <mat-tab-group [selectedIndex]="selected.value"
-              (selectedIndexChange)="selected.setValue($event)">
-              <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">  
-                
-                  <button mat-raised-button class="example-delete-tab-button"  (click)="removeTab(index)">
-                    Eliminar contacto
-                  </button>
-                  <app-client-contact [group]="clientForm.controls.contactos.controls[index]"></app-client-contact>
+            <div class="row" formArrayName="contacts">
+           
               
-              </mat-tab>
+                  <mat-tab-group [selectedIndex]="selected.value"
+                  (selectedIndexChange)="selected.setValue($event)"> 
+                  <mat-tab *ngFor="let tab of tabs; let index = index;" [label]="index">  
+                    
+                      <button mat-raised-button class="example-delete-tab-button"  (click)="removeTab(index)">
+                        Eliminar contacto
+                      </button>
+                      <div *ngIf="dataClient && dataClient.action=='edit' ">
+                        <app-client-contact (sendContact)="addContact($event);" [s]="dataClient['data']['contacts'][index]" ></app-client-contact>
 
-              </mat-tab-group>
+                      </div>
+                      <div *ngIf="!dataClient || dataClient.action=='new' ">
+                        <app-client-contact (sendContact)="addContact($event);" ></app-client-contact>
+
+                      </div>
+                  
+                  </mat-tab>
+  
+                  </mat-tab-group>
+                         
             </div>
           </form>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="saveClient()">Guardar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)='clean()'>Cerrar</button>
+            <button *ngIf="!dataClient || dataClient.action=='new'" type="button" class="btn btn-primary" (click)="saveClient()">Guardar</button>
+            <button *ngIf="dataClient && dataClient.action=='edit'" type="button" class="btn btn-primary" (click)="updateClient(dataClient['data']['id'])">Editar</button>
+
         </div>
     </div>
   </div>

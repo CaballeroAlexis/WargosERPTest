@@ -1,34 +1,20 @@
-    <div class='col-md-12 col-lg-12' style='margin-top: 15px'>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label>Medio de contacto:</label>
-          <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon'><i class='fa fa-phone'></i></span>
-            <input type='hidden' class='input-lg'  value='0'>						
-            <select   class='form-control input-lg info-usuario'  data-campo='tipo_medio' data-tabla='usuario'>
-              <option value='telefono'>Teléfono</option>
-              <option value='mail'>Mail</option>
-              <option value='Otro'>Otro</option>
-            </select>								
-          </div>
-        </label>
-      </div>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label >Valor:</label>
-        <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon' ><i class='fa fa-align-justify'></i></span>							
-            <input class='campoP input-lg form-control'    type='text' placeholder='Valor'  required>
-          </div>
-        </label>
-      </div>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <div class='form-group'>
-          <div class='input-group' (click)="delete_media();">
-            <a  class='btn btn-labeled btn-danger' style='margin-top:20px;padding: 11px; padding-left:50px;padding-right:50px;'>
-              <i class='glyphicon glyphicon-remove'></i>
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
+<form [formGroup]="mediaForm" id='media'>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile>
+        <mat-form-field>
+          <mat-select placeholder="Select"  formControlName="type">
+            <mat-option value="tel">Telefono</mat-option>
+            <mat-option value="mail">Mail</mat-option>
+            <mat-option value="other">Otro</mat-option>
+ 
+          </mat-select> 
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  placeholder="Valor" formControlName="value">
+          </mat-form-field>
+        </mat-grid-tile>      
+  </mat-grid-list>
+  
+</form>

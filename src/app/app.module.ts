@@ -16,7 +16,25 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
 
+//Services
+import {AuthService} from './services/auth.service'
+import {AuthGuardService} from './services/auth-guard.service';
+import { DialogDeleteClientComponent } from './components/client/dialog-delete-client/dialog-delete-client.component';
+import { DialogCreateClientComponent } from './components/client/dialog-create-client/dialog-create-client.component';
+import { DialogModalComponent } from './components/client/dialog-modal/dialog-modal.component';
+import { DialogEditClientComponent } from './components/client/dialog-edit-client/dialog-edit-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +43,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientComponent,
     ModalClientComponent,
     ClientContactComponent,
-    ContactMediaComponent
-  ],
+    ContactMediaComponent,
+    WelcomeComponent,
+    DialogDeleteClientComponent,
+    DialogCreateClientComponent,
+    DialogModalComponent,
+    DialogEditClientComponent
+    ],
   imports: [
     BrowserModule,
     APP_ROUTING,
@@ -36,9 +59,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatIconModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService,AuthGuardService],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogDeleteClientComponent,DialogCreateClientComponent,DialogModalComponent,DialogEditClientComponent]
 })
 export class AppModule { }

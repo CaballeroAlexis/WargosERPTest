@@ -22,14 +22,14 @@ export class ModalClientComponent implements OnInit {
       razon_social: [''],
       nombre_ficticio:[''],
       direccion: [''],
-      condicion_iva:['responsable_inscripto'],
+      con_iva:['responsable_inscripto'],
       observacion:[''],
       primer_aviso:[''],
       segundo_aviso:[''],
       tercer_aviso:[''],
       aviso_baja:[''],
       aviso_corte:[''],
-      contactos: this.fb.array([])
+      contacts: this.fb.array([])
       
     });
 
@@ -53,7 +53,7 @@ export class ModalClientComponent implements OnInit {
   addTab() {
     this.tabs.push('Contacto '+(this.tabs.length+1));
     this.selected.setValue(this.tabs.length - 1);
-    const control = <FormArray>this.clientForm.controls['contactos'];
+    const control = <FormArray>this.clientForm.controls['contacts'];
     const questionCtrl = this.initQuestion();
     control.push(questionCtrl);    
   }
