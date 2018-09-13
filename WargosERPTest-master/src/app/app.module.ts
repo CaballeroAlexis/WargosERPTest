@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { APP_ROUTING } from './app.routes';
 import { AppComponent } from './app.component';
@@ -8,7 +9,6 @@ import { ClientComponent } from './components/client/client.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalClientComponent } from './components/client/modal-client/modal-client.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ClientContactComponent } from './components/client/client-contact/client-contact.component';
 import { ContactMediaComponent } from './components/client/contact-media/contact-media.component';
 import * as $ from "jquery";
@@ -31,8 +31,10 @@ import { RetentionsSUSSComponent } from './components/receipt/payment-method/ret
 import { DepositCashComponent } from './components/receipt/payment-method/deposit-cash/deposit-cash.component';
 import { CheckComponent } from './components/receipt/payment-method/check/check.component';
 
+
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import { ItemAtrributeComponent } from './components/item-atrribute/item-atrribute.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import {HttpClientModule} from '@angular/common/http';
     RetentionsEarningsComponent,
     RetentionsSUSSComponent,
     DepositCashComponent,
-    CheckComponent
+    CheckComponent,
+    ItemAtrributeComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     HttpModule
   ],
   providers: [],
