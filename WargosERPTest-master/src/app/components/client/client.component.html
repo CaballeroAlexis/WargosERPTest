@@ -1,13 +1,14 @@
 <div id="page-wrapper">
     <div class="row ">
-        <button type="button" class="btn btn-primary btn-lg" style="justify-content: center;" data-toggle="modal" data-target="#modalClient" >Nuevo Cliente</button>
+        <button type="button" class="btn btn-primary btn-lg" style="justify-content: center;" data-toggle="modal" data-target="#modalClient" (click)="openDialogModal('new')">Nuevo Cliente</button>
     </div>
     <div class="col-md-12">
         <div class="table-responsive">
-            <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Búsqueda..." aria-label="Username">
+            <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Buscar por código..." aria-label="Username">
+            
             <table class="table" id="tableClient">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Código</th>
                         <th>CUIT/DNI</th>
                         <th>Razón social</th>
@@ -18,17 +19,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alexis</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Caballero</td>
-                        <td>Wargos</td>
+                    <tr *ngFor="let  client of clients let i=index">
+                        <td>{{client.cod}}</td>
+                        <td>{{client.cuit_dni}}</td>
+                        <td>{{client.business_name}}</td>
+                        <td>{{client.fantasy_name}}</td>
+                        <td>{{client.address}}</td>
+                        <td>{{client.con_iva}}</td>
                         <td>
-                            <a class="btn btn-info" style="margin: 2px">Editar</a>
-                            <a class="btn btn-danger" (click)=>Borrar</a>
+                            <a class="btn btn-info" style="margin: 2px" data-toggle="modal"  (click)=openDialogModal(client) >Editar</a>
+                            <a class="btn btn-danger" (click)="openDialog(client.id)">Borrar</a>
                         </td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -37,4 +39,4 @@
 </div>
 
 <!-- Modal -->
-<app-modal-client></app-modal-client>
+<app-modal-client [client]=dataFicha></app-modal-client>

@@ -16,35 +16,40 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ReceiptComponent } from './components/receipt/receipt.component';
-import { ModalReceiptComponent } from './components/receipt/modal-receipt/modal-receipt.component';
-import { TotalsReceiptComponent } from './components/receipt/totals-receipt/totals-receipt.component';
-import { BillReceiptComponent } from './components/receipt/bill-receipt/bill-receipt.component';
-import { PaymentMethodComponent } from './components/receipt/payment-method/payment-method.component';
-import { CashComponent } from './components/receipt/payment-method/cash/cash.component';
-import { DepositCheckComponent } from './components/receipt/payment-method/deposit-check/deposit-check.component';
-import { TransferComponent } from './components/receipt/payment-method/transfer/transfer.component';
-import { RetentionsIvaComponent } from './components/receipt/payment-method/retentions-iva/retentions-iva.component';
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
 
+//Services
+import {AuthService} from './services/auth.service'
+import {AuthGuardService} from './services/auth-guard.service';
+import { DialogDeleteClientComponent } from './components/client/dialog-delete-client/dialog-delete-client.component';
+import { DialogCreateClientComponent } from './components/client/dialog-create-client/dialog-create-client.component';
+import { DialogModalComponent } from './components/client/dialog-modal/dialog-modal.component';
+import { DialogEditClientComponent } from './components/client/dialog-edit-client/dialog-edit-client.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent ,
+    NavbarComponent,
     NavbarSideComponent,
     ClientComponent,
     ModalClientComponent,
     ClientContactComponent,
     ContactMediaComponent,
-    ReceiptComponent,
-    ModalReceiptComponent,
-    TotalsReceiptComponent,
-    BillReceiptComponent,
-    PaymentMethodComponent,
-    CashComponent,
-    DepositCheckComponent,
-    TransferComponent,
-    RetentionsIvaComponent
-  ],
+    WelcomeComponent,
+    DialogDeleteClientComponent,
+    DialogCreateClientComponent,
+    DialogModalComponent,
+    DialogEditClientComponent
+    ],
   imports: [
     BrowserModule,
     APP_ROUTING,
@@ -54,9 +59,20 @@ import { RetentionsIvaComponent } from './components/receipt/payment-method/rete
     MatCheckboxModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatIconModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService,AuthGuardService],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogDeleteClientComponent,DialogCreateClientComponent,DialogModalComponent,DialogEditClientComponent]
 })
 export class AppModule { }

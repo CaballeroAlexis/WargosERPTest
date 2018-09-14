@@ -1,85 +1,71 @@
-<div >
-  <div class='row' style='margin-top:10px;'>
-    <div class='col-md-12 col-lg-12'>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label > Código:</label>
-        <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>									
-            <input class='campoP input-lg form-control'  type='text' placeholder='Código' required>
-          </div>
-        </label>
+<form [formGroup]="contactForm"  style="overflow-y:hidden; overflow-x:hidden">
+  
+      <mat-grid-list cols="3" rowHeight="100px">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  placeholder="Código" formControlName="cod_contact">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="3" rowHeight="100px">
+        <div>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  placeholder="Nombre" formControlName="name_contact">
+          </mat-form-field>
+        </mat-grid-tile>
       </div>
-      <div class='col-lg-8'>
-        <div class='form-group'>
-          <label class='label'> </label>
-          <div class='input-group' >
-            <a class='btn btn-labeled btn-danger' (click)="delete_contact();" style='margin-top:10px;'>
-              <span class='btn-label'>
-              <i class='glyphicon glyphicon-remove'></i>
-              </span>Eliminar
-            </a>
-          </div>
+      <div>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  placeholder="Apellido" formControlName="lname_contact">
+          </mat-form-field>
+        </mat-grid-tile>
+      </div>
+      <div>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput  placeholder="Cargo" formControlName="position">
+          </mat-form-field>
+        </mat-grid-tile>
+      </div>
+
+      </mat-grid-list>    
+      
+  
+  <div formArrayName="medias">
+    
+      <div *ngFor="let media of medias; let index = index" >
+        <div *ngIf="!s">
+          <app-contact-media (sendMedia)="addMediaForm($event)"></app-contact-media>
         </div>
-      </div>
-    </div>
+        <div *ngIf="s">
+          <app-contact-media (sendMedia)="addMediaForm($event)" [medias]="s.medias[index]"></app-contact-media>
+        </div>
+        <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile>
+              <button mat-flat-button color="warn" (click)="removeTab(index); ">Eliminar contacto</button>
+            </mat-grid-tile>
+          </mat-grid-list>  
+      </div>    
   </div>
 
-  <div class='row'>
-    <div class='col-md-12 col-lg-12'>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label > Nombre:</label>
-        <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>									
-            <input class='campoP input-lg form-control'   type='text' placeholder='Nombre'  required>
-          </div>
-        </label>
-      </div>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label >  Apellido:</label>
-          <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>									
-            <input class='campoP input-lg form-control' name='contacto_apellido' id='contacto_apellido+numeroContacto+'  type='text' placeholder='Apellido'  required>
-          </div>
-        </label>
-      </div>
-      <div class='col-lg-4 col-sm-4 smart-form'>
-        <label> Cargo:</label>
-        <label class='input'>
-          <div class='input-group'>
-            <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>									
-            <input class='campoP input-lg form-control' name='contacto_cargo' id='contacto_cargo+numeroContacto+'  type='text' placeholder='Cargo'  required>
-          </div>
-        </label>
-      </div>
-    </div>
-  </div>
-  <app-contact-media></app-contact-media>
-  <div class='col-lg-4 col-sm-4 smart-form'>
-    <div class='form-group'>
-      <div class='input-group' id='Btn_eliminar_medio'>
-        <a class='btn btn-labeled btn-success' (click)="addMedia();" style='margin-top:20px;padding: 11px; padding-left:50px;padding-right:50px;'>
-          <i class='glyphicon glyphicon-remove'></i>
-        </a>
-      </div>
-    </div>
-  </div>
+ <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile>
+      <button mat-flat-button (click)="addMedia();">Nuevo medio de contacto</button>
+    </mat-grid-tile>
+  </mat-grid-list>  
 
-  <div class="row">
-    <div class='col-lg-12 col-sm-12' >
-      <div class='col-lg-12 col-sm-12 smart-form' >
-        <label class='label'>  Observacion:</label>
-          <label class='input'>
-            <div class='input-group'>
-              <span class='input-group-addon'><i class='fa fa-align-justify'></i></span>									
-              <textarea class='campoP input-lg form-control' name='contacto_observacion' id='contacto_observacion+numeroContacto+'  type='text' placeholder='Observación' maxlength='250' required></textarea>							
-            </div>
-          </label>
-      </div>
-    </div>
-  </div>
+ <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <textarea matInput placeholder="Observación" ></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>  
+
+  
   <div class="row">
     <div class='col-lg-12 col-sm-12'>
       <div class='col-lg-12 col-sm-12 smart-form' >
@@ -87,20 +73,29 @@
         <div class="row">
           <div class='col-lg-12 col-sm-12'>
             <div class='col-lg-12 col-sm-12 smart-form' >
-              <mat-checkbox>Aviso de factura</mat-checkbox>
-              <mat-checkbox>Primer aviso</mat-checkbox>
-              <mat-checkbox>Segundo aviso</mat-checkbox>
-              <mat-checkbox>Tercer aviso</mat-checkbox>
-              <mat-checkbox>Aviso de baja</mat-checkbox>
-              <mat-checkbox>Corte de servicio</mat-checkbox>
+              <mat-checkbox *ngIf="!s || !s.not_fac" formControlName="not_fac" >Aviso de factura</mat-checkbox>
+              <mat-checkbox *ngIf="s && s.not_fac" formControlName="not_fac"  [ngModel]="true">Aviso de factura</mat-checkbox>
+
+              <mat-checkbox  *ngIf="!s || !s.not_first" formControlName="not_first" >Primer aviso</mat-checkbox>
+              <mat-checkbox  *ngIf="s && s.not_first" formControlName="not_first" [ngModel]="true" >Primer aviso</mat-checkbox>
+
+              <mat-checkbox *ngIf="!s || !s.not_sec" formControlName="not_sec">Segundo aviso</mat-checkbox>
+              <mat-checkbox *ngIf="s && s.not_sec" formControlName="not_sec" [ngModel]="true">Segundo aviso</mat-checkbox>
+
+              <mat-checkbox *ngIf="!s || !s.not_third" formControlName="not_third">Tercer aviso</mat-checkbox>
+              <mat-checkbox *ngIf="s && s.not_third" formControlName="not_third" [ngModel]="true">Tercer aviso</mat-checkbox>
+
+              <mat-checkbox *ngIf="!s || !s.not_down" formControlName="not_down">Aviso de baja</mat-checkbox>
+              <mat-checkbox *ngIf="s && s.not_down" formControlName="not_down" [ngModel]="true">Aviso de baja</mat-checkbox>
+
+              <mat-checkbox *ngIf="!s || !s.not_cut" formControlName="not_cut">Corte de servicio</mat-checkbox>
+              <mat-checkbox *ngIf="s && s.not_cut" formControlName="not_cut" [ngModel]="true">Corte de servicio</mat-checkbox>
+
             </div>
           </div>
         </div>
-
       </div>
     </div>      
   </div>
-
-
-</div>
+</form>
     

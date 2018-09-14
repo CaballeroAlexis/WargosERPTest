@@ -1,0 +1,124 @@
+<h1 mat-dialog-title >Cliente</h1>
+<mat-dialog-content>
+<form [formGroup]="clientForm">
+
+  <mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput  placeholder="Código" formControlName="cod">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput  placeholder="C.U.I.T./DNI" formControlName="cuit_dni">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput  placeholder="Razón social" formControlName="business_name">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput  placeholder="Nombre ficticio" formControlName="fantasy_name">
+      </mat-form-field>
+    </mat-grid-tile> 
+    
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput  placeholder="Dirección" formControlName="address">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-select placeholder="Condición frente al iva" formControlName="con_iva">
+          <mat-option value="responsable_inscripto">Responsable inscripto</mat-option>
+          <mat-option value="monotributista">Monotributista</mat-option>
+          <mat-option value="exento">Exento</mat-option>
+          <mat-option value="no_responsable">No responsable</mat-option>
+          <mat-option value="consumidor_final">Consumidor final</mat-option>
+        </mat-select> 
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  
+  <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <textarea matInput placeholder="Observación" formControlName="obs"></textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>  
+    <h3>Notificacion factura (en dias)</h3>
+  <mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Primer aviso"  formControlName="primer_aviso">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Segundo aviso"  formControlName="segundo_aviso">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Tercer aviso" formControlName="tercer_aviso">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Aviso de baja"  formControlName="aviso_baja">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Corte de servicio" formControlName="aviso_corte">
+      </mat-form-field>
+    </mat-grid-tile>                                            
+  </mat-grid-list>
+
+
+
+  <mat-grid-list cols="1" rowHeight="100px">
+  <h2>Contactos</h2>
+<button mat-raised-button class="example-add-tab-button" (click)="addTab()">Nuevo contacto</button>
+      <div class="row" >
+           
+              
+          <mat-tab-group [selectedIndex]="selected.value"
+               (selectedIndexChange)="selected.setValue($event)">
+          <mat-tab *ngFor="let tab of tabs; let index = index;" [label]="index">  
+            
+              <button mat-raised-button class="example-delete-tab-button"  (click)="removeTab(index)">
+                Eliminar contacto
+              </button>
+              <div *ngIf="description!='new'" >
+                <app-client-contact (sendContact)="addContact($event);" [s]="description['contacts'][index]"></app-client-contact>
+
+              </div>
+              <div *ngIf="description=='new' ">
+                <app-client-contact  (sendContact)="addContact($event);"></app-client-contact>
+
+              </div>
+          
+          </mat-tab>
+
+          </mat-tab-group>
+                 
+    </div>
+  </mat-grid-list>
+</form>
+
+</mat-dialog-content>
+  <mat-dialog-actions>
+      <button class="mat-raised-button"(click)="close()">Close</button>
+      <button *ngIf="description=='new'" class="mat-raised-button mat-primary"(click)="openDialogModal()">Guardar</button>
+      <button *ngIf="description!='new'" class="mat-raised-button mat-primary"(click)="openDialogEdit()">Editar</button>
+ 
+  </mat-dialog-actions>

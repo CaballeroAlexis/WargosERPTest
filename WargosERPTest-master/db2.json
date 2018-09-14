@@ -1,0 +1,36 @@
+{
+  "client": [
+    {
+      "cod": "2",
+      "cuit_dni": "dni",
+      "business_name": "",
+      "fantasy_name": "",
+      "address": "",
+      "con_iva": "responsable_inscripto",
+      "obs": "",
+      "primer_aviso": "",
+      "segundo_aviso": "",
+      "tercer_aviso": "",
+      "aviso_baja": "",
+      "aviso_corte": "",
+      "contacts": [],
+      "id": 2
+    },
+    {
+      "cod": "new",
+      "cuit_dni": "",
+      "business_name": "",
+      "fantasy_name": "",
+      "address": "",
+      "con_iva": "responsable_inscripto",
+      "obs": "",
+      "primer_aviso": "",
+      "segundo_aviso": "",
+      "tercer_aviso": "",
+      "aviso_baja": "",
+      "aviso_corte": "",
+      "contacts": [],
+      "id": 3
+    }
+  ]
+}

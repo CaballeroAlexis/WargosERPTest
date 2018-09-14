@@ -1,0 +1,87 @@
+{
+  "client": [
+    {
+      "cod": "Empresa 1",
+      "cuit_dni": "20-38290456-0",
+      "business_name": "Liit S.A",
+      "fantasy_name": "liit",
+      "address": "Berazategui",
+      "con_iva": "responsable_inscripto",
+      "obs": "Observacion de la empresa ",
+      "primer_aviso": 8,
+      "segundo_aviso": 12,
+      "tercer_aviso": 16,
+      "aviso_baja": 20,
+      "aviso_corte": 24,
+      "contacts": [
+        {
+          "cod_contact": "pepe",
+          "name_contact": "jose",
+          "lname_contact": "lopez",
+          "position": "Gerente",
+          "obs": "",
+          "medias": [
+            {
+              "type": "tel",
+              "value": "4321-1234"
+            }
+          ],
+          "not_fac": "",
+          "not_first": null,
+          "not_sec": null,
+          "not_third": null,
+          "not_down": true,
+          "not_cut": true
+        }
+      ],
+      "id": 1
+    },
+    {
+      "cod": "Empresa 2",
+      "cuit_dni": "30-98876389-90",
+      "business_name": "Wargos S.R.L",
+      "fantasy_name": "wargos",
+      "address": "Berazategui",
+      "con_iva": "responsable_inscripto",
+      "obs": "la mejor empresa que el mundo concio",
+      "primer_aviso": 9,
+      "segundo_aviso": 39,
+      "tercer_aviso": 39,
+      "aviso_baja": 90,
+      "aviso_corte": 900,
+      "contacts": [
+        {
+          "cod_contact": "",
+          "name_contact": "",
+          "lname_contact": "",
+          "position": "",
+          "obs": "",
+          "medias": [],
+          "not_fac": "",
+          "not_first": null,
+          "not_sec": null,
+          "not_third": null,
+          "not_down": null,
+          "not_cut": ""
+        }
+      ],
+      "id": 2
+    },
+    {
+      "cod": "Empresa 3",
+      "cuit_dni": "32-23323321-1",
+      "business_name": "roberto s.a",
+      "fantasy_name": "roberto",
+      "address": "croacia",
+      "con_iva": "responsable_inscripto",
+      "obs": "lala",
+      "primer_aviso": "",
+      "segundo_aviso": "",
+      "tercer_aviso": "",
+      "aviso_baja": "",
+      "aviso_corte": "",
+      "contacts": [],
+      "id": 3
+    }
+  ]
+}
